@@ -1,9 +1,10 @@
 body {
     font-family: Arial, sans-serif;
     background: radial-gradient(circle, #ffccff, #ff99cc, #ff66ff);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; /* Activăm layout-ul flexibil */
+    flex-direction: column; /* Aranjăm elementele pe verticală */
+    justify-content: center; /* Centrare pe verticală */
+    align-items: center; /* Centrare pe orizontală */
     min-height: 100vh;
     margin: 0;
     overflow: hidden;
@@ -90,14 +91,11 @@ h1 {
 }
 
 .birthday-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 2em;
-    color: white;
-    text-shadow: 2px 2px 4px #000000;
-    z-index: 10;
+    font-size: 2em; /* Dimensiune mai mare pentru vizibilitate */
+    color: white; /* Culoare albă pentru contrast */
+    text-align: center; /* Centrare pe orizontală */
+    text-shadow: 2px 2px 4px #000000; /* Adăugăm un efect de umbră */
+    margin-bottom: 20px; /* Spațiu între mesaj și container */
 }
 
 .confetti {

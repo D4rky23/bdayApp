@@ -143,7 +143,7 @@ function typeMessage(message, elementId, speed) {
 
 // Lansează efectul de scriere
 document.addEventListener('DOMContentLoaded', function() {
-    typeMessage("La Multi Ani, Mihaela! 🎉", "birthdayMessage", 100);
+    typeMessage("La Multi Ani, Mihaela! ❤️❤️", "birthdayMessage", 100);
 });
 
 function createStars() {
