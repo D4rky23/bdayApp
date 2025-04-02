@@ -35,6 +35,8 @@ body {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px; /* Limităm lățimea containerului */
+    width: 90%; /* Lățime adaptabilă */
 }
 
 h1 {
@@ -164,5 +166,44 @@ h1 {
     }
     50% {
         opacity: 1;
+    }
+}
+
+/* Media query pentru ecrane mai mici (telefoane) */
+@media (max-width: 768px) {
+    .birthday-message {
+        font-size: 1.5em; /* Dimensiune mai mică pentru text */
+    }
+
+    .container {
+        padding: 15px; /* Reducem padding-ul */
+        max-width: 90%; /* Lățime aproape completă */
+    }
+
+    #timer {
+        font-size: 20px; /* Dimensiune mai mică pentru text */
+    }
+
+    #age {
+        font-size: 16px; /* Dimensiune mai mică pentru text */
+    }
+}
+
+/* Media query pentru ecrane foarte mici (telefoane sub 480px) */
+@media (max-width: 480px) {
+    .birthday-message {
+        font-size: 1.2em; /* Dimensiune mai mică pentru text */
+    }
+
+    .container {
+        padding: 10px; /* Reducem padding-ul și mai mult */
+    }
+
+    #timer {
+        font-size: 18px; /* Dimensiune mai mică pentru text */
+    }
+
+    #age {
+        font-size: 14px; /* Dimensiune mai mică pentru text */
     }
 }
