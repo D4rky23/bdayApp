@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function explodeConfetti() {
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 250; i++) {
         const confetti = document.createElement('div');
         confetti.classList.add('confetti');
         confetti.style.left = Math.random() * 100 + "vw";

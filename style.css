@@ -135,9 +135,9 @@ h1 {
     position: absolute;
     width: 10px;
     height: 10px;
-    background-color: hsl(calc(360 * var(--hue, 0)), 100%, 50%);
+    /*  background-color: hsl(calc(360 * var(--hue, 0)), 100%, 50%); */ /* Removed static background color */
     border-radius: 50%;
-    animation: confettiExplode 3s ease-out forwards;
+    animation: confettiExplode 10s ease-out forwards, rainbowConfetti 10s linear infinite; /* Added rainbowConfetti animation */
 }
 
 @keyframes confettiExplode {
@@ -148,6 +148,27 @@ h1 {
     100% {
         transform: translate(var(--random-x), var(--random-y)) scale(0.5);
         opacity: 0;
+    }
+}
+
+@keyframes rainbowConfetti {
+    0% {
+        background-color: hsl(0, 100%, 50%);
+    }
+    20% {
+        background-color: hsl(72, 100%, 50%);
+    }
+    40% {
+        background-color: hsl(144, 100%, 50%);
+    }
+    60% {
+        background-color: hsl(216, 100%, 50%);
+    }
+    80% {
+        background-color: hsl(288, 100%, 50%);
+    }
+    100% {
+        background-color: hsl(360, 100%, 50%);
     }
 }
 
