@@ -96,6 +96,37 @@ h1 {
     text-align: center; /* Centrare pe orizontală */
     text-shadow: 2px 2px 4px #000000; /* Adăugăm un efect de umbră */
     margin-bottom: 20px; /* Spațiu între mesaj și container */
+    animation: zoomIn 2s infinite alternate, rainbowText 5s infinite; /* Combinăm efectul de zoom și rainbow */
+}
+
+@keyframes zoomIn {
+    0% {
+        transform: scale(1); /* Dimensiune normală */
+    }
+    100% {
+        transform: scale(1.2); /* Dimensiune mărită */
+    }
+}
+
+@keyframes rainbowText {
+    0% {
+        color: #ff0000; /* Roșu */
+    }
+    20% {
+        color: #ffa500; /* Portocaliu */
+    }
+    40% {
+        color: #ffff00; /* Galben */
+    }
+    60% {
+        color: #008000; /* Verde */
+    }
+    80% {
+        color: #0000ff; /* Albastru */
+    }
+    100% {
+        color: #4b0082; /* Indigo */
+    }
 }
 
 .confetti {

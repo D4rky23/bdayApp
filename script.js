@@ -142,8 +142,20 @@ function typeMessage(message, elementId, speed) {
 }
 
 // Lansează efectul de scriere
-document.addEventListener('DOMContentLoaded', function() {
-    typeMessage("La Multi Ani, Mihaela! ❤️❤️", "birthdayMessage", 100);
+document.addEventListener('DOMContentLoaded', function () {
+    const message = "La Multi Ani, Mihaela! ❤️❤️";
+    const messageElement = document.getElementById('birthdayMessage');
+    let index = 0;
+
+    function typeMessage() {
+        if (index < message.length) {
+            messageElement.innerHTML += message.charAt(index);
+            index++;
+            setTimeout(typeMessage, 100); // Controlează viteza de scriere
+        }
+    }
+
+    typeMessage(); // Pornește efectul de scriere
 });
 
 function createStars() {
