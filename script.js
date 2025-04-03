@@ -211,6 +211,14 @@ document.getElementById('surpriseButton').addEventListener('click', function() {
     setTimeout(() => {
         this.disabled = false;
     }, 3000);
+    
+    // Adaugă efect de flash
+    flashScreen();
+    
+    // Adaugă efect de tremur
+    setTimeout(() => {
+        shakeScreen();
+    }, 100);
 });
 
 function createMassiveFireworks() {
@@ -309,4 +317,21 @@ function createFestiveTexts() {
             }, 2000);
         }, i * 200);
     }
+}
+
+function shakeScreen() {
+    document.body.classList.add('shake-effect');
+    setTimeout(() => {
+        document.body.classList.remove('shake-effect');
+    }, 1000);
+}
+
+function flashScreen() {
+    const flash = document.createElement('div');
+    flash.className = 'screen-flash';
+    document.body.appendChild(flash);
+    
+    setTimeout(() => {
+        flash.remove();
+    }, 500);
 }
