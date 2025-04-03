@@ -228,3 +228,80 @@ h1 {
         font-size: 14px; /* Dimensiune mai mică pentru text */
     }
 }
+
+/* Rainbow animation */
+.rainbow {
+  position: relative;
+  width: 400px; /* Mai lat, de la 300px la 400px */
+  height: 150px;
+  margin: 0 auto 30px;
+  opacity: 0;
+  animation: fadeIn 3.5s forwards; /* Apare mai încet, de la 2s la 3.5s */
+}
+
+.rainbow-layer {
+  position: absolute;
+  border-radius: 150px 150px 0 0;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  opacity: 0;
+}
+
+/* Rainbow colors */
+.red {
+  height: 150px;
+  background-color: rgba(255, 0, 0, 0.7);
+  animation: fadeIn 1.5s 0.3s forwards; /* Durată mai lungă, de la 1s la 1.5s */
+}
+
+.orange {
+  height: 130px;
+  background-color: rgba(255, 127, 0, 0.7);
+  animation: fadeIn 1.5s 0.6s forwards; /* Mai lent, de la 0.4s la 0.6s întârziere */
+}
+
+.yellow {
+  height: 110px;
+  background-color: rgba(255, 255, 0, 0.7);
+  animation: fadeIn 1.5s 0.9s forwards; /* Mai lent, de la 0.6s la 0.9s întârziere */
+}
+
+.green {
+  height: 90px;
+  background-color: rgba(0, 255, 0, 0.7);
+  animation: fadeIn 1.5s 1.2s forwards; /* Mai lent, de la 0.8s la 1.2s întârziere */
+}
+
+.blue {
+  height: 70px;
+  background-color: rgba(0, 0, 255, 0.7);
+  animation: fadeIn 1.5s 1.5s forwards; /* Mai lent, de la 1s la 1.5s întârziere */
+}
+
+.indigo {
+  height: 50px;
+  background-color: rgba(75, 0, 130, 0.7);
+  animation: fadeIn 1.5s 1.8s forwards; /* Mai lent, de la 1.2s la 1.8s întârziere */
+}
+
+.violet {
+  height: 30px;
+  background-color: rgba(148, 0, 211, 0.7);
+  animation: fadeIn 1.5s 2.1s forwards; /* Mai lent, de la 1.4s la 2.1s întârziere */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Make sure the rainbow appears above the birthday message */
+#birthdayMessage {
+  position: relative;
+  z-index: 2;
+}

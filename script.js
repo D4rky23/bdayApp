@@ -171,3 +171,25 @@ function createStars() {
 
 // Creează stele la încărcarea paginii
 document.addEventListener('DOMContentLoaded', createStars);
+
+// Create rainbow element
+function createRainbow() {
+  const rainbowContainer = document.createElement('div');
+  rainbowContainer.className = 'rainbow';
+  
+  // Create each color layer
+  const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+  
+  colors.forEach(color => {
+    const layer = document.createElement('div');
+    layer.className = `rainbow-layer ${color}`;
+    rainbowContainer.appendChild(layer);
+  });
+  
+  // Insert the rainbow before the birthday message
+  const birthdayMessage = document.getElementById('birthdayMessage');
+  document.body.insertBefore(rainbowContainer, birthdayMessage);
+}
+
+// Call this function to create the rainbow
+createRainbow();
