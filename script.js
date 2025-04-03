@@ -193,3 +193,120 @@ function createRainbow() {
 
 // Call this function to create the rainbow
 createRainbow();
+
+document.getElementById('surpriseButton').addEventListener('click', function() {
+    // Adaugă sunet de artificii
+    const sound = new Audio('https://www.fesliyanstudios.com/play-mp3/5672');
+    sound.volume = 0.5;
+    sound.play().catch(e => console.log("Nu s-a putut reda sunetul: ", e));
+    
+    // Creează artificii
+    createMassiveFireworks();
+    
+    // Creează text festiv care apare aleatoriu
+    createFestiveTexts();
+    
+    // Dezactivează butonul temporar pentru a preveni spam-ul
+    this.disabled = true;
+    setTimeout(() => {
+        this.disabled = false;
+    }, 3000);
+});
+
+function createMassiveFireworks() {
+    // Lansăm mai multe artificii
+    for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+            createFirework();
+        }, i * 300); // Lansează artificii la intervale de 300ms
+    }
+}
+
+function createFirework() {
+    // Poziție aleatoare pentru artificiu
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * (window.innerHeight * 0.7);
+    
+    // Culori pentru artificii
+    const colors = [
+        '#ff0000', '#00ff00', '#0000ff', '#ffff00', 
+        '#ff00ff', '#00ffff', '#ff9900', '#9900ff'
+    ];
+    
+    // Creează artificiul central
+    const firework = document.createElement('div');
+    firework.className = 'firework';
+    firework.style.left = `${x}px`;
+    firework.style.top = `${y}px`;
+    document.body.appendChild(firework);
+    
+    // Animația de explozie
+    setTimeout(() => {
+        // Șterge artificiul central
+        firework.remove();
+        
+        // Creează particule pentru explozie
+        for (let i = 0; i < 40; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Poziție inițială la locul exploziei
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            
+            // Culoare aleatoare pentru fiecare particulă
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            particle.style.backgroundColor = color;
+            
+            // Direcție aleatoare pentru particulă
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 100 + Math.random() * 150;
+            const xDistance = Math.cos(angle) * distance;
+            const yDistance = Math.sin(angle) * distance;
+            
+            // Setează variabile CSS pentru animație
+            particle.style.setProperty('--x', `${xDistance}px`);
+            particle.style.setProperty('--y', `${yDistance}px`);
+            
+            document.body.appendChild(particle);
+            
+            // Curăță particula după animație
+            setTimeout(() => {
+                particle.remove();
+            }, 1500);
+        }
+    }, 300);
+}
+
+function createFestiveTexts() {
+    const texts = [
+        "La Mulți Ani!", "Woohoo!", "Surpriză!", "Te iubesc!", 
+        "❤️", "✨", "🎂", "🎉", "🎁", "🥳"
+    ];
+    
+    // Creează 15 texte festive aleatorii
+    for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+            const text = document.createElement('div');
+            text.className = 'festive-text';
+            
+            // Poziție aleatoare pe ecran
+            text.style.left = `${Math.random() * 80 + 10}%`;
+            text.style.top = `${Math.random() * 80 + 10}%`;
+            
+            // Text aleatoriu din lista noastră
+            text.textContent = texts[Math.floor(Math.random() * texts.length)];
+            
+            // Mărime aleatoare pentru text
+            const size = 30 + Math.random() * 30;
+            text.style.fontSize = `${size}px`;
+            
+            document.body.appendChild(text);
+            
+            // Curăță textul după animație
+            setTimeout(() => {
+                text.remove();
+            }, 2000);
+        }, i * 200);
+    }
+}

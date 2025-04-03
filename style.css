@@ -305,3 +305,100 @@ h1 {
   position: relative;
   z-index: 2;
 }
+
+.surprise-button {
+    background: linear-gradient(45deg, #ff3366, #ff00cc);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 0, 150, 0.4);
+    margin: 20px auto;
+    display: block;
+    transition: all 0.3s ease;
+    animation: pulse 1.5s infinite alternate;
+    position: relative;
+    z-index: 100;
+}
+
+.surprise-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 0, 150, 0.6);
+}
+
+.surprise-button:active {
+    transform: scale(0.95);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+/* Stiluri pentru artificii */
+.firework {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    animation: explode 1.5s forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+/* Stiluri pentru textul festiv */
+.festive-text {
+    position: fixed;
+    color: #ff00cc;
+    font-size: 40px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+    z-index: 1000;
+    animation: fadeOutUp 2s forwards;
+    opacity: 0;
+}
+
+@keyframes fadeOutUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
