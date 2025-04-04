@@ -222,8 +222,12 @@ document.getElementById('surpriseButton').addEventListener('click', function() {
 });
 
 function createMassiveFireworks() {
+    // Determine the number of fireworks based on screen size
+    const isMobile = window.innerWidth <= 768;
+    const numberOfFireworks = isMobile ? 5 : 15; // Reduced number for mobile
+    
     // Lansăm mai multe artificii
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < numberOfFireworks; i++) {
         setTimeout(() => {
             createFirework();
         }, i * 300); // Lansează artificii la intervale de 300ms
@@ -253,8 +257,12 @@ function createFirework() {
         // Șterge artificiul central
         firework.remove();
         
+        // Determine the number of particles based on screen size
+        const isMobile = window.innerWidth <= 768;
+        const numberOfParticles = isMobile ? 20 : 40; // Reduced number for mobile
+        
         // Creează particule pentru explozie
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < numberOfParticles; i++) {
             const particle = document.createElement('div');
             particle.className = 'particle';
             
@@ -292,8 +300,12 @@ function createFestiveTexts() {
         "❤️", "✨", "🎂", "🎉", "🎁", "🥳"
     ];
     
-    // Creează 15 texte festive aleatorii
-    for (let i = 0; i < 15; i++) {
+    // Determine the number of texts based on screen size
+    const isMobile = window.innerWidth <= 768;
+    const numberOfTexts = isMobile ? 5 : 15; // Reduced number for mobile
+    
+    // Creează texte festive aleatorii
+    for (let i = 0; i < numberOfTexts; i++) {
         setTimeout(() => {
             const text = document.createElement('div');
             text.className = 'festive-text';
@@ -305,9 +317,9 @@ function createFestiveTexts() {
             // Text aleatoriu din lista noastră
             text.textContent = texts[Math.floor(Math.random() * texts.length)];
             
-            // Mărime aleatoare pentru text
-            const size = 30 + Math.random() * 30;
-            text.style.fontSize = `${size}px`;
+            // Determine the font size based on screen size
+            const fontSize = isMobile ? 20 + Math.random() * 20 : 30 + Math.random() * 30;
+            text.style.fontSize = `${fontSize}px`;
             
             document.body.appendChild(text);
             
@@ -320,9 +332,32 @@ function createFestiveTexts() {
 }
 
 function shakeScreen() {
+    const isMobile = window.innerWidth <= 768;
+    const shakeIntensity = isMobile ? 5 : 10; // Reduced shake intensity for mobile
+    
     document.body.classList.add('shake-effect');
+    
+    // Adjust the shake animation keyframes
+    const styleSheet = document.styleSheets[0];
+    const keyframes = `@keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-${shakeIntensity}px); }
+        20%, 40%, 60%, 80% { transform: translateX(${shakeIntensity}px); }
+    }`;
+    
+    // Insert the new keyframes
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+    
     setTimeout(() => {
         document.body.classList.remove('shake-effect');
+        
+        // Remove the inserted keyframes
+        for (let i = 0; i < styleSheet.cssRules.length; i++) {
+            if (styleSheet.cssRules[i].name === 'shake') {
+                styleSheet.deleteRule(i);
+                break;
+            }
+        }
     }, 1000);
 }
 
